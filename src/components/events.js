@@ -12,7 +12,7 @@ export default function Events() {
 
   useEffect(() => {
     getEvents();
-  }, []);
+  });
 
   function getEvents() {
     axios
@@ -64,7 +64,9 @@ export default function Events() {
               className="column is-one-quarter-desktop is-one-third-tablet is-half-mobile outer"
             >
               <Link to={`/events/fest/${event.id}`}>
-                <p className="eventname">{event.eventname}</p>
+                <strong>
+                  <p className="eventname">{event.eventname}</p>
+                </strong>
                 <p> {moment(event.date).format("dddd, MMMM Do YYYY")} </p>
                 <figure className="outer">
                   <img

@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import dayout from "../images/dayout2.png";
-import Nav from "./nav";
+import { Link } from "react-router-dom";
+import Nav from "./nav.js";
 
 export default function Home() {
   return (
@@ -9,10 +9,10 @@ export default function Home() {
       <Nav />
       <Link to="/events">
         <img src={dayout} alt="dayout-logo" className="animated fadeInLeft" />
-        <p className="tagline animated fadeInRight">
-          <strong>A guide to festivals in London</strong>
-        </p>
       </Link>
+      <p className="tagline animated fadeInRight">
+        <strong>A guide to festivals in London</strong>
+      </p>
     </div>
   );
 }
