@@ -15,7 +15,7 @@ export default function Weather() {
   function getWeather() {
     axios
       .get(
-        `http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${weatherkey}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${weatherkey}&units=metric`
       )
       .then((res) => setWeather(res.data))
       .catch((error) => {
