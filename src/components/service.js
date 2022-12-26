@@ -24,7 +24,7 @@ export default function Service() {
     axios
       .get("https://api.tfl.gov.uk/line/mode/tube/status")
       .then((res) => setService(res.data))
-      .catch((err) => setService(err.message));
+      .catch((err) => setError(err.message));
   }
   return (
     <div>

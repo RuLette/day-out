@@ -5,6 +5,7 @@ mapboxgl.accessToken = process.env.REACT_APP_MAPTOKEN;
 
 export default function Map({ location }) {
   const [zoom, setZoom] = useState(14);
+
   const [lng, setLng] = useState(location.lng);
   const [lat, setLat] = useState(location.lat);
   const node = useRef(null);
