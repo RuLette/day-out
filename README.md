@@ -42,8 +42,6 @@ After I decided to create a web app for events, I brainstormed the functionality
 I then began the project by researching which APIs were user friendly.
 I started testing the APIs in Postman to get an idea what data was available before deciding which had the data I wanted.
 
-![eventrequest](https://user-images.githubusercontent.com/29276064/57707002-c4aa2880-765e-11e9-9dca-af4a4cdad37a.png)
-
 For pulling event data, I decided on the Skiddle API and narrowed the search down to just festivals. For weather information, I chose the Open Weather API for data on the weather in London. For tube service statuses, Transport For London (TFL)'s API was very handy as it was open source and did not require an API Key for requests.
 
 After getting the information I required from the APIs, I drew wireframes out for each page in the application.
