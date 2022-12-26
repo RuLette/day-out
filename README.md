@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# Dayout
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Technologies used
 
-## Available Scripts
+- React
+- Axios
+- Webpack
+- TFL API
+- Open Weather API
+- Skiddle API
+- Mapbox-gl
+- Dotenv
+- GitHub
+- Moment
+- Bulma
 
-In the project directory, you can run:
+To run the code for this app in a local environment setting simply run `npm start` and remember to include api keys for Skiddle, Mapbox and OpenWeather.
 
-### `npm start`
+## DayOut
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Dayout is a simple application demo that shows the user festivals that are currently ongoing in London. It also displays the current weather and tube service status.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This a functional component update to an application I had created in 2021 that previously used classical React components.
 
-### `npm test`
+![dayout1](https://user-images.githubusercontent.com/29276064/209124879-a2b1524c-4b9a-4967-9795-44b6be7062c9.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br/>
+Upon selecting an event, the user may read its description while details of the venue are presented on a map using the Mapbox-gl API.
+<br/>
+<br/>
 
-### `npm run build`
+![dayoutshow](https://user-images.githubusercontent.com/29276064/209125148-fddf7e7f-efc1-41c5-a87f-1092b79ad5ec.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Process
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+After I decided to create a web app for events, I brainstormed the functionality I would have for the site.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- A homepage
+- An index page which displayed festivals, the day's weather and TFL conditions
+- Each event should have a show page of information, which could include a map showing the locale of the venue
 
-### `npm run eject`
+I then began the project by researching which APIs were user friendly.
+I started testing the APIs in Postman to get an idea what data was available before deciding which had the data I wanted.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![eventrequest](https://user-images.githubusercontent.com/29276064/57707002-c4aa2880-765e-11e9-9dca-af4a4cdad37a.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+For pulling event data, I decided on the Skiddle API and narrowed the search down to just festivals. For weather information, I chose the Open Weather API for data on the weather in London. For tube service statuses, Transport For London (TFL)'s API was very handy as it was open source and did not require an API Key for requests.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+After getting the information I required from the APIs, I drew wireframes out for each page in the application.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Challenges
 
-## Learn More
+The main challenge of the project was working with public APIs and combining them together. Mapbox-gl was tricky to navigate at first, and considerable time was taken to read the documentation provided on their website. For instance, I had to pass the data from Skiddle API of festival names and locations to Mapbox.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+ useEffect(() => {
+    let map = new mapboxgl.Map({
+      container: node.current,
+      style: "mapbox://styles/mapbox/streets-v11",
+      center: [Number(lng), Number(lat)],
+      zoom: zoom,
+    });
+    map.on("move", () => {
+      setLng(map.getCenter().lng.toFixed(4));
+      setLat(map.getCenter().lat.toFixed(4));
+      setZoom(map.getZoom().toFixed(2));
+    });
+  }, [lat, lng]);
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Dates and times provided by APIs such as Skiddle occasionally needed to be reformatted to make the data more readable. Moment was a library converted that helped to to make the conversion of dates easier.
 
-### Code Splitting
+## Future features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- A future feature could include the site providing traffic conditions for vehicles
+- To expand on the site more event types could be created, not just festivals
+- Use MapBoxGL to provide walking directions to the event

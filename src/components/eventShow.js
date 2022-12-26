@@ -3,10 +3,9 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Map from "./map.js";
 import { useNavigate } from "react-router-dom";
+import moment from "moment";
 
 const skiddleKey = process.env.REACT_APP_SKIDDLEKEY;
-
-const moment = require("moment");
 
 export default function EventShow() {
   const [event, setEvent] = useState([]);

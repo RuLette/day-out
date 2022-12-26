@@ -4,9 +4,9 @@ import Service from "./service.js";
 import Events from "./events.js";
 import Header from "./header.js";
 import Nav from "./nav.js";
+import moment from "moment";
 
 const EventsIndex = () => {
-  const moment = require("moment");
   const today = moment().format("dddd, MMMM Do YYYY");
   return (
     <div className="container">

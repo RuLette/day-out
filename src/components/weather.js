@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import moment from "moment";
 
 const weatherkey = process.env.REACT_APP_WEATHER_KEY;
-const moment = require("moment");
 
 export default function Weather() {
   const [weather, setWeather] = useState(null);
